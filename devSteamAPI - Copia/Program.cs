@@ -63,9 +63,6 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireUppercase = false;
-    options.Password.RequireDigit = false;
     options.Password.RequireUppercase = false;
     options.Password.RequiredLength = 4;
 })
@@ -87,7 +84,7 @@ app.UseSwaggerUI();
 
 //Mapear os Endopoint padrão de Identy Framework
 app.MapGroup("/Users").MapIdentityApi<IdentityUser>();
-//app.MapGroup("/Roles").MapIdentityApi<IdentityRole>();
+app.MapGroup("/Roles").MapIdentityApi<IdentityRole>();
 
 app.UseHttpsRedirection();
 //Permitet a autenticação e a autorização de qualquer origem 
